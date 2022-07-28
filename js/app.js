@@ -9,6 +9,21 @@ listItems.forEach((navItem) => {
   //   const navItemLink = navItem.querySelector("a");
   // console.log(navItemLink);
   navItem.addEventListener("click", (event) => {
+    const arrayOfNodes = Array.from(listItems); // convert nodeList to array
+    // console.log(listToArray);
+    const elementToReduceHeight = arrayOfNodes.filter(
+      (node) => node !== navItem
+    );
+
+    elementToReduceHeight.forEach((node) => {
+      const innerSubList = node.querySelector(".inner__sub__list");
+      if (innerSubList) {
+        innerSubList.parentElement.style.height = `${34}px`;
+      }
+      node.style.height = `${34}px`;
+    });
+
+    console.log(elementToReduceHeight);
     // const currentItem = event.currentTarget
     const currentItem = navItem;
     // console.log(navItem);
